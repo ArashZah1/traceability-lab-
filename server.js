@@ -25,8 +25,8 @@ app.get('/', function(req, res) {
 app.post('/api/vacationspots', function(req, res) {
   let {name} = req.body
   name = name.trim()
-  const index = vacationSpots.findIndex(function(vName) { //finds if spot exists
-    return vName === name
+  const index = vacationSpots.findIndex(function(spotName) { //finds if spot exists already
+    return spotName === name
   })
   console.log(index)
 

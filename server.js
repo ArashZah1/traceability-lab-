@@ -1,29 +1,25 @@
 const express = require('express');
 const app = express();
-const path = require('path')
+const path = require('path');
 
-const Rollbar = require('rollbar')
-const rollbar = new Rollbar({
-  accessToken: '37852bc27b674c45b9d53b77a99a1960',
+var Rollbar = require("rollbar");
+var rollbar = new Rollbar({
+  accessToken: '631c284bd8ab471d83a28722061657a3',
   captureUncaught: true,
-  captureUnhandledRejections: true,
-})
+  captureUnhandledRejections: true
+});
 
-app.use(express.json())
-
+app.use(express.json());
 
 app.get('/', function(req, res) {
-    rollbar.log('Hello World')
+    rollbar.log('Hello There')
 
-    rollbar.error('User tried to access incorrect path')
+    rollbar.error('User tried to acess incorrect path')
 
-    res.sendFile(path.join(__dirname, '/public/index.html')) //dirname current directory working in
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 })
 
-
-
-const port = process.env.PORT || 4545; //process gets the port of heroku
-
-app.listen(port, function() {
-    console.log(`Server jammin on ${port}`)
-} )
+const port = process.env.PORT || 4545
+app.listen(port, function () {
+    console.log(`Server running on ${port}`)
+})

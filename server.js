@@ -11,13 +11,13 @@ var rollbar = new Rollbar({
 
 app.use(express.json());
 
-// app.get('/', function(req, res) {
-//     rollbar.log('Hello There')
+app.get('/', function(req, res) {
+    rollbar.log('Hello There')
 
-//     rollbar.error('User tried to acess incorrect path')
+    rollbar.error('User tried to acess incorrect path')
 
-//     res.sendFile(path.join(__dirname, '/public/index.html'))
-// })
+    res.sendFile(path.join(__dirname, '/public/index.html'))
+})
 
 const port = process.env.PORT || 4545
 app.listen(port, function () {
